@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>演示：HTML5点播m3u8(hls)格式视频</title>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://www.helloweba.net/demo/2018/hls/css/demo.css">
+<style>
+
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-md-3 col-xs-12"><h1 class="logo"></h1></div>
+        </div>
+    </header>
+    <div class="row main">
+        <div class="col-md-12">
+            <h2 class="top_title"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><a href="http://www.helloweba.net/javascript/571.html">HTML5点播m3u8(hls)格式视频</a></h2>
+            <div class="container" style="width: 96%; margin: 30px auto">
+                <video id="video" controls loop="false" width="100%"></video>
+            </div>
+    
+        </div>
+    </div>
+    <footer>
+        <p>Powered by</p>
+    </footer>
+</div>
+<script src="hls.min.js"></script>
+
+<script>
+var video = document.getElementById('video');
+  if(Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource('http://mi3.haop.store/2020/06/24/22dfkk23/index.m3u8');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = 'http://mi3.haop.store/2020/06/24/22dfkk23/index.m3u8';
+    video.addEventListener('loadedmetadata',function() {
+      video.play();
+    });
+  }
+</script>
+</body>
+</html>
